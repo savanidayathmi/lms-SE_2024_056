@@ -5,6 +5,7 @@ import lms.model.DVD;
 import lms.model.Student;
 import lms.model.Staff;
 import lms.service.Library;
+import lms.model.LibraryItem;
 
 public class Main {
 
@@ -33,6 +34,8 @@ public class Main {
         library.addItem(book1);
         library.addItem(book2);
         library.addItem(dvd1);
+
+
 
         Student student = new Student(
                 "M001",
@@ -64,5 +67,7 @@ public class Main {
                     "Rejected invalid book: " + e.getMessage()
             );
         }
+
+        library.streamIfPossible(dvd1);
     }
 }
