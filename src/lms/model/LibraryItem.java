@@ -1,6 +1,6 @@
 package lms.model;
 
-public abstract class LibraryItem {
+public class LibraryItem{
 
     private String id;
     private String title;
@@ -48,6 +48,7 @@ public abstract class LibraryItem {
         isBorrowed = false;
     }
 
+
     public double calculateLateFee(int daysLate) {
         return daysLate * 10.0;
     }
@@ -60,4 +61,5 @@ public abstract class LibraryItem {
                 + "', borrowed=" + isBorrowed
                 + "}";
     }
+
 }
