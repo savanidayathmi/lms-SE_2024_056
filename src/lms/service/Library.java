@@ -1,3 +1,4 @@
+
 package lms.service;
 
 import lms.model.LibraryItem;
@@ -14,8 +15,20 @@ public class Library {
     private final List<LibraryItem> items = new ArrayList<>();
     private final List<Member> members = new ArrayList<>();
 
+
     public void addItem(LibraryItem item) {
         items.add(item);
+        System.out.println("Added via addItem(LibraryItem): " + item.getTitle());
+    }
+
+    public void addItem(Book book) {
+        items.add(book);
+        System.out.println("Added via addItem(Book): " + book.getTitle());
+    }
+
+    public void addItem(DVD dvd) {
+        items.add(dvd);
+        System.out.println("Added via addItem(DVD): " + dvd.getTitle());
     }
 
     public void addMember(Member member) {

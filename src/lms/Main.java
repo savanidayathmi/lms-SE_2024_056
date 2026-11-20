@@ -43,6 +43,8 @@ public class Main {
         library.addItem(dvd1);
         library.addItem(magazine);
 
+
+
         Student student = new Student(
                 "M001",
                 "Nadeesha Perera"
@@ -87,5 +89,7 @@ public class Main {
                     "Rejected invalid book: " + e.getMessage()
             );
         }
+
+        library.streamIfPossible(dvd1);
     }
 }
