@@ -1,4 +1,7 @@
 package lms.model;
 
-public class Loanable {
+public interface Loanable {
+    void loan(Member member);
+
+    void returnItem();
 }
