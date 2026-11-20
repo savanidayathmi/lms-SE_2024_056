@@ -4,6 +4,8 @@ import lms.model.Book;
 import lms.model.DVD;
 import lms.model.Student;
 import lms.model.Staff;
+import lms.model.Magazine;
+import lms.model.Member;
 import lms.service.Library;
 import lms.model.LibraryItem;
 
@@ -30,10 +32,16 @@ public class Main {
                 "Introduction to Algorithms",
                 120
         );
+        Magazine magazine = new Magazine(
+                "M001",
+                "Software Weekly",
+                15
+        );
 
         library.addItem(book1);
         library.addItem(book2);
         library.addItem(dvd1);
+        library.addItem(magazine);
 
 
 
@@ -55,6 +63,20 @@ public class Main {
         library.listMembers();
 
         library.printAllLateFees(3);
+
+        System.out.println("\n--- Loans ---");
+        library.lend(book1, student);
+        library.lend(book1, staff);
+        library.lend(dvd1, staff);
+        library.lend(magazine, staff);
+
+        System.out.println("\n--- Reservations ---");
+        library.reserveIfPossible(book1, staff);
+        library.reserveIfPossible(dvd1, staff);
+
+        System.out.println("\n--- Members ranked by activity ---");
+        library.printMembersByActivity();
+
 
         try {
             Book invalidBook = new Book(

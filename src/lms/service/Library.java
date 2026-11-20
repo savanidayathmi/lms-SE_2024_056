@@ -3,10 +3,11 @@ package lms.service;
 
 import lms.model.LibraryItem;
 import lms.model.Member;
-import lms.model.Book;
-import lms.model.DVD;
+import lms.model.Loanable;
+import lms.model.Reservable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Library {
@@ -60,19 +61,31 @@ public class Library {
             );
         }
     }
+    public void lend(Loanable thing, Member member) {
+        thing.loan(member);
+    }
 
+    public void reserveIfPossible(LibraryItem item, Member member) {
 
-    public void streamIfPossible(LibraryItem item) {
-
-        if (item instanceof DVD dvd) {
-            System.out.println(
-                    "Streaming \"" + dvd.getTitle() +
-                            "\" (" + dvd.getDurationMinutes() + " min)..."
-            );
+        if (item instanceof Reservable r) {
+            r.reserve(member);
         } else {
+            System.out.println(item.getTitle() + " cannot be reserved.");
+        }
+    }
+
+    public void printMembersByActivity() {
+
+        List<Member> sortedMembers = new ArrayList<>(members);
+
+        Collections.sort(sortedMembers);
+
+        System.out.println("--- Members ranked by activity ---");
+
+        for (Member member : sortedMembers) {
             System.out.println(
-                    item.getTitle() +
-                            " cannot be streamed - it isn't a DVD."
+                    member.getName() + " (" +
+                            member.getBorrowedCount() + " borrowed)"
             );
         }
     }
